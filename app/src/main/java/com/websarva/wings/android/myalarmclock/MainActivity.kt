@@ -59,7 +59,6 @@ class MainActivity : AppCompatActivity()
 
         setAlarm.setOnClickListener {
             val date = "${dateText.text} ${timeText.text}".toDate()
-            textview1.text = "${dateText.text} ${timeText.text}"
             when {
                 date != null -> {
                     val calendar = Calendar.getInstance()
@@ -92,6 +91,7 @@ class MainActivity : AppCompatActivity()
         }
     }
 
+    //アラームをセットするボタン押下時の処理
     @TargetApi (Build.VERSION_CODES.LOLLIPOP)
     private fun setAlarmManager(calendar: Calendar) {
         val am =getSystemService(Context.ALARM_SERVICE) as AlarmManager
@@ -111,6 +111,7 @@ class MainActivity : AppCompatActivity()
         }
     }
 
+    //アラームをキャンセルボタン押下時の処理
     private fun cancelAlarmManager() {
         val am = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(this, AlarmBroadcastReceiver::class.java)
